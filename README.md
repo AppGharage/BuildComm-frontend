@@ -1,6 +1,7 @@
 # Buildcomm
 
-#About BuildComm
+##About BuildComm
+--------------------------------------
 
   Are you an Administrator of a developer community having issues making this community grow with members or reaching out to your existing members at anytime or even reaching out to other community leaders is tiresome? To get a solution to this, you need to get onto many platforms and type a long essay telling people about this community. Reaching out to other community leaders is another way your community can grow; how do you do this when you now have to find the community leader's name,contact or email and then type a long message for him to read and get back to you after days.
 
@@ -11,17 +12,18 @@
    This application we belive is the solution to the problem we face as developers in Ghana.
   
   
-#Features 
-     1.Simple UI
-     2.Bootstrap 4
-     3.Send Welcome messages,explanation of group,it's mission and activities to a new member.
-     4.Send notifications both offline and online and categorize members.
-     5.An Admin can search and  view list of community leaders according to interest.
-     6.Ability to post events and make comments.
-     7.Ability to advertise the community on other platforms like Facebook with just a call to action to signup new members and also specify 
-       types of users who join the group.
+##Features 
+--------------------------------------
+     1. Simple UI
+     2. Bootstrap 4
+     3. Send Welcome messages,explanation of group,it's mission and activities to a new member.
+     4. Send notifications both offline and online and categorize members.
+     5. An Admin can search and  view list of community leaders according to interest.
+     6. Ability to post events and make comments.
+     7. Ability to advertise the community on other platforms like Facebook with just a call to action to signup new members and also specify types of users who join the group.
 
-#Authors
+##Authors
+--------------------------------------
     1.Saliha Hotamisli
     2.Micheal Sarpong
     3.Roberta Akoto
