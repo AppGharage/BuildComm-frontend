@@ -20,7 +20,8 @@
      4. Send notifications both offline and online and categorize members.
      5. An Admin can search and  view list of community leaders according to interest.
      6. Ability to post events and make comments.
-     7. Ability to advertise the community on other platforms like Facebook with just a call to action to signup new members and also specify types of users who join the group.
+     7. Ability to advertise the community on other platforms like Facebook with just a 
+     call to action to signup new members and also specify types of users who join the group.
 
 ## Authors
 --------------------------------------
