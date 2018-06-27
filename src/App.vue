@@ -1,31 +1,37 @@
 <template>
   <div id="app">
-    <header>
-      <span>Vue.js PWA</span>
-    </header>
-    <main>
-      <img src="./assets/logo.png" alt="Vue.js PWA">
-      <router-view></router-view>
-    </main>
+    <Navigation/>
+<router-view/>
   </div>
+
 </template>
 
 <script>
+
+import Navigation from "@/components/Navigation"
+
+
 export default {
-  name: 'app'
+  name: 'app',
+  components:{
+    Navigation,
+    
+   
+  }
 }
 </script>
 
-<style>
+<style scoped>
 body {
   margin: 0;
 }
 
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: 'Roboto Slab', serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
+  font-size: 17px;
 }
 
 main {
@@ -37,7 +43,7 @@ header {
   margin: 0;
   height: 56px;
   padding: 0 16px 0 24px;
-  background-color: #35495E;
+  background-color: #f36747;
   color: #ffffff;
 }
 
