@@ -37,7 +37,7 @@ export default {
     components:{
         Navigation
     },
-    data() {
+    data: function ()  {
     return {
       model: {
         email: "",
