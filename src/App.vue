@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Navigation/>
+   
 <router-view/>
   </div>
 
@@ -8,22 +8,17 @@
 
 <script>
 
-import Navigation from "@/components/Navigation"
 
 
 export default {
   name: 'app',
-  components:{
-    Navigation,
-    
-   
-  }
 }
 </script>
 
 <style scoped>
 body {
   margin: 0;
+  
 }
 
 #app {

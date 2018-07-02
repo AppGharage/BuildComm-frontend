@@ -1,6 +1,5 @@
 <template>
 <div id="Home">
-    <Navigation/>
     
 </div>
 </template>
@@ -16,3 +15,7 @@ export default {
    
   }
 }
+</script>
+
+
+
