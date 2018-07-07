@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Amaranth|Arima+Madurai|PT+Serif+Caption|Roboto|Roboto+Mono|Roboto+Slab" rel="stylesheet">
+   
+
     <meta name="theme-color" content="#4DBA87">
 
     <!-- Add to home screen for Safari on iOS -->
@@ -42,6 +44,80 @@
         <!-- built files will be auto injected -->
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
+        <script>
+            window.fbAsyncInit = function() {
+                // FB JavaScript SDK configuration and setup
+                FB.init({
+                  appId      : '233117664081705', // FB App ID
+                  cookie     : true,  // enable cookies to allow the server to access the session
+                  xfbml      : true,  // parse social plugins on this page
+                  version    : 'v2.8' // use graph api version 2.8
+                });
+                
+                // Check whether the user already logged in
+                FB.getLoginStatus(function(response) {
+                    if (response.status === 'connected') {
+                        let accesstoken = response.authResponse.accessToken;
+                        getFbUserData(accesstoken);
+                    }
+                });
+            };
+            
+            // Load the JavaScript SDK asynchronously
+            (function(d, s, id) {
+                var js, fjs = d.getElementsByTagName(s)[0];
+                if (d.getElementById(id)) return;
+                js = d.createElement(s); js.id = id;
+                js.src = "//connect.facebook.net/en_US/sdk.js";
+                fjs.parentNode.insertBefore(js, fjs);
+            }(document, 'script', 'facebook-jssdk'));
+            
+            // Facebook login with JavaScript SDK
+            function fbLogin() {
+                FB.login(function (response) {
+                    if (response.authResponse) {
+                        // Get and display the user profile data
+                        getFbUserData();
+                    } else {
+                        document.getElementById('status').innerHTML = 'User cancelled login or did not fully authorize.';
+                    }
+                }, {scope: 'email'});
+            }
+            
+            // Fetch the user profile data from facebook
+            function getFbUserData(accesstoken){
+                FB.api('/me', {locale: 'en_US', fields: 'id,first_name,last_name,email'},
+                function (response) {
+                    document.getElementById('status').innerHTML = 'Thanks for logging in, ' + response.first_name + '!';
+                    document.getElementById('userData').innerHTML = '<p><b>FB ID:</b> '+response.id+'</p><p><b>Name:</b> '+response.first_name+' '+response.last_name+'</p><p><b>Email:</b> '+response.email+'</p>';
+                    
+                    const data =  {
+                      oauth_uid: response.id,
+                      oauth_provider: "facebook",
+                      first_name: response.first_name,
+                      last_name: response.last_name,
+                      email: response.email,
+                      access_token: accesstoken
+                    };
+                    console.log(data);
+                    axios.post('https://buildcomm-api.herokuapp.com/api/token', data)
+                    .then(function (response) {
+                      if(response.status){
+                        console.log("Connected Succesfully :)");
+                      }
+                    })
+                    .catch(function (error) {
+                      console.log(error);
+                    });
+                });
+            }
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
+              // Save user data to the database
+              function saveUserData(userData){
+                  $.post('userData.php', {oauth_provider:'facebook',userData: JSON.stringify(userData)}, function(data){ return true; });
+              }
+      </script>
 </body>
 
 </html>
