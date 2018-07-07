@@ -20,7 +20,7 @@
                                 <button type="button" class="btn btn-primary" style="width:80%">Facebook</button>
                                 </div>
                                 <div class="row  justify-content-center" style="padding:25px; ">                      
-                                <button type="button" class="btn btn-warning" style="width:80%">Slack</button>
+                                <button type="button" class="btn btn-warning" style="width:80%;color:#fff">Slack</button>
                                 </div>
                             
                         </div>
@@ -36,17 +36,16 @@
                          <div class="card-body">
                             <div class="row justify-content-center" ><h5>Change Password</h5></div>
                                 <div class="row  justify-content-center" style="padding:20px"> 
-                                    <div class="col-10 col-sm-8">
+                                    <div class="col-xl-5 col-lg-11 col-sm-6 col-md-8">
+                                        <label for="">Old Password:</label>                     
+                                        <input type="password" >
+                                    </div>
+                                    <div class="col-xl-5 col-lg-11 col-sm-6 col-md-8">
                                         <label for="">Old Password:</label>                     
                                         <input type="password" >
                                     </div>
                                 </div>
-                                    <div class="row  justify-content-center" style="padding:20px;"> 
-                                    <div class="col-10 col-sm-8">
-                                        <label for="">New Password:</label>                     
-                                        <input type="password" >
-                                    </div>
-                                </div>                             
+                                                            
                         </div>
                     </div>
                 </div>
