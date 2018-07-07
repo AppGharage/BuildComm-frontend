@@ -2,10 +2,6 @@
     <div id="login">
      <Navigation/>
         <div class="container">
-            <!-- Display login status -->
-            <div id="status"></div>
-            <!-- Display user profile data -->
-            <div id="userData"></div>
             <div class="row">
                 <div class="col-2  col-md-3 col-lg-4"></div>
                 <div class="col-2  col-md-3 col-lg-4">
@@ -24,13 +20,9 @@
                                 <div class="col-6 col-md-4 col-lg-4">  
                             <button type="submit" class="btn btn"  value="submit" style="background-color:#f36747;color:white; width:100%;">
                                 <router-link to="" style="text-decoration:none;color: inherit;">Login</router-link></button>                            </div> 
-                            
-                        <!-- Facebook login or logout button -->
-                        <a href="javascript:void(0);" onclick="fbLogin()" id="fbLink" class="btn btn-sm btn-info">Connect with Facebook</a>
                             </div>  
                                             
-                        </form> 
-
+                        </form>  
                     </div>
             </div>  
         </div>
