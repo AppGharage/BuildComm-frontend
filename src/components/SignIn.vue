@@ -2,6 +2,7 @@
     <div id="login">
      <Navigation/>
         <div class="container">
+            <p v-if="status">{{msg}} </p>
             <div class="row">
                 <div class="col-2  col-md-3 col-lg-4"></div>
                 <div class="col-2  col-md-3 col-lg-4">
@@ -10,15 +11,15 @@
                         <form id="signIn" style="margin-top:90px; text-align:left">
                             <div class="form-group">
                                 <label for="email">Email address</label>
-                                <input type="email" class="form-control" id="email"  placeholder="Enter email">
+                                <input type="email" class="form-control" id="email"  placeholder="Enter email" v-model="email">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input type="password" class="form-control" id="password" placeholder="Password" v-model="password">
                             </div>
                             <div class="row">
                                 <div class="col-6 col-md-4 col-lg-4">  
-                            <button type="submit" class="btn btn"  value="submit" style="background-color:#f36747;color:white; width:100%;">
+                            <button  class="btn btn"  value="submit" style="background-color:#f36747;color:white; width:100%;" v-on:click="signin()">
                                 <router-link to="" style="text-decoration:none;color: inherit;">Login</router-link></button>                            </div> 
                             </div>  
                                             
@@ -37,45 +38,52 @@ export default {
     components:{
         Navigation
     },
-    data: function ()  {
+    data() {
     return {
-      model: {
         email: "",
         password: "",
-      },
-      loading: "",
-      status: ""
+        loading: "",
+        status: false,
+        msg: ''
     };
-  },
+},
+  
   methods: {
-    login() {
-        const formData = new FormData();
-
-        formData.append("email", this.model.email);
-        formData.append("password", this.model.password);
-        this.loading = "Signing in";
-       
-        // Post to server
-        axios.post("http://buildcomm-api.herokuapp.com/users", formData).then(res => {
+    validate: function() {
+      if(  this.email == null ||this.password == null ){
             
-            // Post a status message
-            this.loading = "";
-
-        //if validation from api succeeds
-            if (res.data.status == true) {
-        // now send the user to the next route
-                this.$router.push({
-                    name: "Dashboard",
-                    params: { user: res.data.user }
+            this.status = true;
+            this.msg = 'All Fields are Required';
+        return false;
+      }else{
+            this.status = false;
+            return true;
+      }
+    }, 
+        signin: function() {
+           const logIn = {
+                email: this.email,
+                password: this.password
+            };   
+            const validation = this.validate();
+            
+            if(validation){
+                axios.post("https://buildcomm-api.herokuapp.com/api/users", logIn).then(res => {
+                    this.loading = "";
+                    if (res.data.status == true) {
+                        // now send the user to the next route
+                        this.$router.push({
+                        name: "Dashboard",
+                        params: { user: res.data.user }
+                        });
+                    } else {
+                        this.status = true;
+                        this.msg = 'Email or Password incorrect';
+                    }
                 });
-            } else {
-                this.status = res.data.message;
             }
-        });
-    }
   }
- 
-
+}
 }
 </script>
 
