@@ -24,7 +24,7 @@
                         </div>
                         <div class="form-group col-md-6">
                         <label for="telephone">Telephone</label>
-                        <input type="tel" class="form-control" id="telephone" v-model="telephone">
+                        <input type="number" class="form-control" id="telephone" v-model="telephone">
                         </div>
                     </div>
                     <div class="form-group">
@@ -91,8 +91,7 @@ methods: {
     validate: function() {
       if( this.communityName == null || this.communityURL == null
        || this.description == null || this.fullName == null 
-       || this.email == null|| this.email == null
-       ||this.password == null || this.telephone == null){
+       || this.email == null ||this.password == null || this.telephone == null){
 
             this.status = true;
             this.msg = 'All Fields are Required';
@@ -128,7 +127,6 @@ methods: {
                             password: this.password,
                             community_id: communityID
                         };
-
                         // Post to server
                         axios.post("https://buildcomm-api.herokuapp.com/api/users", personalData).then(res => {
                             // Post a status message
@@ -150,10 +148,6 @@ methods: {
                     this.msg = 'All Fields are Required';
                 }
             });
-           
-            this.loading = "Creating your account, please wait";
-
-
         } 
       
     },

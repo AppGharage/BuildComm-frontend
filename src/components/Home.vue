@@ -5,9 +5,7 @@
 </template>
 
 <script>
-
 import Navigation from "./Navigation";
-
 export default {
   name: "Home",
   components: {
@@ -16,6 +14,3 @@ export default {
   }
 }
 </script>
-
-
-
